@@ -1,0 +1,32 @@
+.panel--customers .panel__header h2,
+.panel--consult .panel__header h2 {
+  color: #1d2939;
+}
+
+.panel--detail .panel__header h2 {
+  color: #344054;
+}
+
+.panel--form {
+  background: #f8fafc;
+}
+
+.panel--form .panel__header h2 {
+  color: #1d2939;
+}
+
+.panel--form .panel__meta {
+  color: #667085;
+}
+
+.consult-card .primary-button {
+  align-self: flex-start;
+}
+
+.data-table tbody tr.is-selected {
+  background: #e0f2fe;
+}
+
+.muted {
+  color: #98a2b3;
+}

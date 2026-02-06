@@ -1,0 +1,317 @@
+{
+  "meta": {
+    "source": "CRM Lite Mock",
+    "generatedAt": "2026-02-04T09:00:00+09:00",
+    "total": 14
+  },
+  "consultations": [
+    {
+      "id": "CONS-240901-101",
+      "customerId": "CUST-240501-001",
+      "ticketNo": "CS-20260203-4491",
+      "type": "배송",
+      "status": "처리중",
+      "priority": "높음",
+      "channel": "전화",
+      "orderId": "ORD-20260128-3321",
+      "summary": "새벽배송 지연 문의",
+      "memo": "배송 출발 상태에서 2시간 이상 지연. 허브 스캔 누락 가능성 확인 요청. 고객에게 실시간 업데이트 제공.",
+      "tags": ["배송지연", "허브확인"],
+      "resolutionCode": "DLV-CHK",
+      "agent": {
+        "id": "AG-0031",
+        "name": "홍지연",
+        "team": "고객경험팀-3센터"
+      },
+      "createdAt": "2026-02-03T09:12:00+09:00",
+      "updatedAt": "2026-02-03T10:05:00+09:00",
+      "followUpAt": "2026-02-04"
+    },
+    {
+      "id": "CONS-240901-102",
+      "customerId": "CUST-240501-001",
+      "ticketNo": "CS-20260120-3318",
+      "type": "결제",
+      "status": "완료",
+      "priority": "보통",
+      "channel": "채팅",
+      "orderId": "ORD-20260120-8851",
+      "summary": "카드 승인 취소 확인",
+      "memo": "결제 후 취소 처리 완료. 카드사 승인 취소는 영업일 기준 2~3일 소요 안내.",
+      "tags": ["승인취소"],
+      "resolutionCode": "PAY-CANCEL",
+      "agent": {
+        "id": "AG-0020",
+        "name": "최보라",
+        "team": "고객경험팀-2센터"
+      },
+      "createdAt": "2026-01-20T15:12:00+09:00",
+      "updatedAt": "2026-01-20T15:55:00+09:00",
+      "followUpAt": ""
+    },
+    {
+      "id": "CONS-240901-103",
+      "customerId": "CUST-240501-002",
+      "ticketNo": "CS-20260201-2203",
+      "type": "환불",
+      "status": "접수",
+      "priority": "높음",
+      "channel": "이메일",
+      "orderId": "ORD-20260131-1209",
+      "summary": "환불 지연 항의",
+      "memo": "환불 승인 후 7일 경과. 결제 수단 확인 및 환불 보류 사유 점검 필요.",
+      "tags": ["환불지연", "주의"],
+      "resolutionCode": "RFD-CHECK",
+      "agent": {
+        "id": "AG-0041",
+        "name": "정영훈",
+        "team": "고객경험팀-4센터"
+      },
+      "createdAt": "2026-02-01T11:20:00+09:00",
+      "updatedAt": "2026-02-01T11:20:00+09:00",
+      "followUpAt": "2026-02-05"
+    },
+    {
+      "id": "CONS-240901-104",
+      "customerId": "CUST-240501-003",
+      "ticketNo": "CS-20260204-0091",
+      "type": "상품 문의",
+      "status": "처리중",
+      "priority": "보통",
+      "channel": "채팅",
+      "orderId": "ORD-20260201-6611",
+      "summary": "정기배송 주기 변경",
+      "memo": "정기배송 주기 4주 -> 2주 변경 요청. 다음 회차부터 반영 예정.",
+      "tags": ["정기배송", "변경요청"],
+      "resolutionCode": "SUB-CHANGE",
+      "agent": {
+        "id": "AG-0018",
+        "name": "장혜린",
+        "team": "고객경험팀-1센터"
+      },
+      "createdAt": "2026-02-04T08:22:00+09:00",
+      "updatedAt": "2026-02-04T08:40:00+09:00",
+      "followUpAt": ""
+    },
+    {
+      "id": "CONS-240901-105",
+      "customerId": "CUST-240501-004",
+      "ticketNo": "CS-20260129-5522",
+      "type": "배송",
+      "status": "완료",
+      "priority": "보통",
+      "channel": "전화",
+      "orderId": "ORD-20260127-3332",
+      "summary": "프리미엄 배송 시간 변경",
+      "memo": "배송 시간대 변경 요청 처리 완료. 쿠폰 보상 제공.",
+      "tags": ["프리미엄", "보상"],
+      "resolutionCode": "DLV-CHANGE",
+      "agent": {
+        "id": "AG-0031",
+        "name": "홍지연",
+        "team": "고객경험팀-3센터"
+      },
+      "createdAt": "2026-01-29T13:08:00+09:00",
+      "updatedAt": "2026-01-29T14:10:00+09:00",
+      "followUpAt": ""
+    },
+    {
+      "id": "CONS-240901-106",
+      "customerId": "CUST-240501-004",
+      "ticketNo": "CS-20260115-4412",
+      "type": "기타",
+      "status": "완료",
+      "priority": "낮음",
+      "channel": "이메일",
+      "orderId": "",
+      "summary": "정책 FAQ 요청",
+      "memo": "프리미엄 정책 변경 요약본 발송.",
+      "tags": ["정책문의"],
+      "resolutionCode": "POLICY-SEND",
+      "agent": {
+        "id": "AG-0052",
+        "name": "한정윤",
+        "team": "정책지원팀"
+      },
+      "createdAt": "2026-01-15T09:40:00+09:00",
+      "updatedAt": "2026-01-15T10:10:00+09:00",
+      "followUpAt": ""
+    },
+    {
+      "id": "CONS-240901-107",
+      "customerId": "CUST-240501-006",
+      "ticketNo": "CS-20260202-1188",
+      "type": "배송",
+      "status": "접수",
+      "priority": "보통",
+      "channel": "앱 문의",
+      "orderId": "ORD-20260201-3310",
+      "summary": "배송지 변경 요청",
+      "memo": "배송지 변경 가능 여부 확인 요청. 출고 전 여부 확인 필요.",
+      "tags": ["배송지변경"],
+      "resolutionCode": "DLV-ADDR",
+      "agent": {
+        "id": "AG-0029",
+        "name": "신예림",
+        "team": "고객경험팀-2센터"
+      },
+      "createdAt": "2026-02-02T19:05:00+09:00",
+      "updatedAt": "2026-02-02T19:05:00+09:00",
+      "followUpAt": "2026-02-03"
+    },
+    {
+      "id": "CONS-240901-108",
+      "customerId": "CUST-240501-006",
+      "ticketNo": "CS-20260122-1012",
+      "type": "환불",
+      "status": "완료",
+      "priority": "보통",
+      "channel": "전화",
+      "orderId": "ORD-20260120-6620",
+      "summary": "반품 환불 완료 확인",
+      "memo": "반품 입고 확인 후 환불 완료 안내.",
+      "tags": ["반품완료"],
+      "resolutionCode": "RFD-DONE",
+      "agent": {
+        "id": "AG-0022",
+        "name": "김유정",
+        "team": "고객경험팀-2센터"
+      },
+      "createdAt": "2026-01-22T10:11:00+09:00",
+      "updatedAt": "2026-01-22T10:32:00+09:00",
+      "followUpAt": ""
+    },
+    {
+      "id": "CONS-240901-109",
+      "customerId": "CUST-240501-007",
+      "ticketNo": "CS-20260131-9044",
+      "type": "상품 문의",
+      "status": "완료",
+      "priority": "낮음",
+      "channel": "이메일",
+      "orderId": "",
+      "summary": "정책 변경 문의",
+      "memo": "정책 변경 공지 링크 전달. 세부 문의 사항 추가 접수 예정.",
+      "tags": ["정책문의"],
+      "resolutionCode": "POLICY-LINK",
+      "agent": {
+        "id": "AG-0052",
+        "name": "한정윤",
+        "team": "정책지원팀"
+      },
+      "createdAt": "2026-01-31T11:35:00+09:00",
+      "updatedAt": "2026-01-31T11:50:00+09:00",
+      "followUpAt": ""
+    },
+    {
+      "id": "CONS-240901-110",
+      "customerId": "CUST-240501-008",
+      "ticketNo": "CS-20260203-7733",
+      "type": "상품 문의",
+      "status": "처리중",
+      "priority": "보통",
+      "channel": "채팅",
+      "orderId": "ORD-20260201-0098",
+      "summary": "상품 상세 스펙 문의",
+      "memo": "상품 옵션 호환성 문의. 제조사 답변 대기.",
+      "tags": ["상품스펙"],
+      "resolutionCode": "PRD-SPEC",
+      "agent": {
+        "id": "AG-0018",
+        "name": "장혜린",
+        "team": "고객경험팀-1센터"
+      },
+      "createdAt": "2026-02-03T10:02:00+09:00",
+      "updatedAt": "2026-02-03T10:20:00+09:00",
+      "followUpAt": "2026-02-05"
+    },
+    {
+      "id": "CONS-240901-111",
+      "customerId": "CUST-240501-002",
+      "ticketNo": "CS-20260119-0022",
+      "type": "결제",
+      "status": "완료",
+      "priority": "낮음",
+      "channel": "채팅",
+      "orderId": "ORD-20260119-4402",
+      "summary": "결제수단 변경 안내",
+      "memo": "간편결제 연결 상태 문제 확인, 카드 재등록 안내.",
+      "tags": ["결제오류"],
+      "resolutionCode": "PAY-RESET",
+      "agent": {
+        "id": "AG-0039",
+        "name": "오은지",
+        "team": "결제지원팀"
+      },
+      "createdAt": "2026-01-19T09:30:00+09:00",
+      "updatedAt": "2026-01-19T09:55:00+09:00",
+      "followUpAt": ""
+    },
+    {
+      "id": "CONS-240901-112",
+      "customerId": "CUST-240501-003",
+      "ticketNo": "CS-20260105-1144",
+      "type": "기타",
+      "status": "완료",
+      "priority": "낮음",
+      "channel": "이메일",
+      "orderId": "",
+      "summary": "멤버십 혜택 문의",
+      "memo": "멤버십 혜택 상세 안내 및 링크 발송.",
+      "tags": ["멤버십"],
+      "resolutionCode": "MEMB-INFO",
+      "agent": {
+        "id": "AG-0048",
+        "name": "배수진",
+        "team": "고객경험팀-4센터"
+      },
+      "createdAt": "2026-01-05T16:20:00+09:00",
+      "updatedAt": "2026-01-05T16:30:00+09:00",
+      "followUpAt": ""
+    },
+    {
+      "id": "CONS-240901-113",
+      "customerId": "CUST-240501-005",
+      "ticketNo": "CS-20251105-5503",
+      "type": "환불",
+      "status": "완료",
+      "priority": "보통",
+      "channel": "전화",
+      "orderId": "ORD-20251029-7700",
+      "summary": "장기 미접속 고객 환불 요청",
+      "memo": "휴면 전환 안내 후 환불 완료.",
+      "tags": ["휴면", "환불완료"],
+      "resolutionCode": "RFD-DONE",
+      "agent": {
+        "id": "AG-0012",
+        "name": "신도희",
+        "team": "고객경험팀-1센터"
+      },
+      "createdAt": "2025-11-05T09:22:00+09:00",
+      "updatedAt": "2025-11-05T09:50:00+09:00",
+      "followUpAt": ""
+    },
+    {
+      "id": "CONS-240901-114",
+      "customerId": "CUST-240501-008",
+      "ticketNo": "CS-20260130-9920",
+      "type": "배송",
+      "status": "완료",
+      "priority": "보통",
+      "channel": "전화",
+      "orderId": "ORD-20260129-3388",
+      "summary": "출고지연 보상 문의",
+      "memo": "출고지연에 따른 보상쿠폰 발급 완료.",
+      "tags": ["보상쿠폰"],
+      "resolutionCode": "COMP-COUPON",
+      "agent": {
+        "id": "AG-0025",
+        "name": "윤미정",
+        "team": "고객경험팀-2센터"
+      },
+      "createdAt": "2026-01-30T12:50:00+09:00",
+      "updatedAt": "2026-01-30T13:20:00+09:00",
+      "followUpAt": ""
+    }
+  ]
+}

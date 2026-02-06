@@ -1,0 +1,201 @@
+{
+  "meta": {
+    "source": "CRM Lite Mock",
+    "generatedAt": "2026-02-04T09:00:00+09:00",
+    "total": 8
+  },
+  "customers": [
+    {
+      "id": "CUST-240501-001",
+      "name": "김서연",
+      "customerNo": "10083452",
+      "phone": "010-2384-2211",
+      "email": "seoyeon.kim@example.com",
+      "grade": "로켓와우",
+      "vipLevel": "GOLD",
+      "accountStatus": "정상",
+      "joinDate": "2021-11-03",
+      "lastActiveAt": "2026-02-03T18:30:00+09:00",
+      "region": "서울",
+      "address": "서울 강남구 테헤란로 123",
+      "totalOrders": 112,
+      "totalSpend": 4231500,
+      "preferredContact": "전화",
+      "consent": {
+        "marketing": true,
+        "sms": true,
+        "email": false
+      },
+      "tags": ["재구매우수", "VIP"],
+      "notes": "최근 배송 관련 문의 다수."
+    },
+    {
+      "id": "CUST-240501-002",
+      "name": "박민재",
+      "customerNo": "10094510",
+      "phone": "010-9910-4412",
+      "email": "minjae.park@example.com",
+      "grade": "일반",
+      "vipLevel": "NONE",
+      "accountStatus": "정상",
+      "joinDate": "2023-05-18",
+      "lastActiveAt": "2026-02-01T12:22:00+09:00",
+      "region": "경기",
+      "address": "경기 성남시 분당구 정자일로 89",
+      "totalOrders": 18,
+      "totalSpend": 265000,
+      "preferredContact": "채팅",
+      "consent": {
+        "marketing": false,
+        "sms": true,
+        "email": true
+      },
+      "tags": ["환불요청", "모니터링"],
+      "notes": "결제 실패 이력 있음."
+    },
+    {
+      "id": "CUST-240501-003",
+      "name": "이하나",
+      "customerNo": "10041278",
+      "phone": "010-4312-8821",
+      "email": "hana.lee@example.com",
+      "grade": "로켓와우",
+      "vipLevel": "SILVER",
+      "accountStatus": "정상",
+      "joinDate": "2020-02-27",
+      "lastActiveAt": "2026-02-04T08:10:00+09:00",
+      "region": "부산",
+      "address": "부산 해운대구 센텀동로 45",
+      "totalOrders": 89,
+      "totalSpend": 1912300,
+      "preferredContact": "이메일",
+      "consent": {
+        "marketing": true,
+        "sms": false,
+        "email": true
+      },
+      "tags": ["정기배송"],
+      "notes": "정기배송 일정 변경 요청 가능성."
+    },
+    {
+      "id": "CUST-240501-004",
+      "name": "정도윤",
+      "customerNo": "10077411",
+      "phone": "010-6633-5210",
+      "email": "doyoon.jung@example.com",
+      "grade": "프리미엄",
+      "vipLevel": "PLATINUM",
+      "accountStatus": "정상",
+      "joinDate": "2019-08-12",
+      "lastActiveAt": "2026-01-29T15:40:00+09:00",
+      "region": "서울",
+      "address": "서울 마포구 월드컵북로 96",
+      "totalOrders": 205,
+      "totalSpend": 9150000,
+      "preferredContact": "전화",
+      "consent": {
+        "marketing": true,
+        "sms": true,
+        "email": true
+      },
+      "tags": ["프리미엄", "클레임주의"],
+      "notes": "클레임 발생 시 빠른 대응 필요."
+    },
+    {
+      "id": "CUST-240501-005",
+      "name": "최유진",
+      "customerNo": "10092333",
+      "phone": "010-3401-9088",
+      "email": "yujin.choi@example.com",
+      "grade": "일반",
+      "vipLevel": "NONE",
+      "accountStatus": "휴면",
+      "joinDate": "2022-01-19",
+      "lastActiveAt": "2025-11-05T09:32:00+09:00",
+      "region": "대구",
+      "address": "대구 수성구 동대구로 300",
+      "totalOrders": 6,
+      "totalSpend": 82000,
+      "preferredContact": "채팅",
+      "consent": {
+        "marketing": false,
+        "sms": false,
+        "email": false
+      },
+      "tags": ["휴면예정"],
+      "notes": "휴면 전환 안내 필요."
+    },
+    {
+      "id": "CUST-240501-006",
+      "name": "오지훈",
+      "customerNo": "10051209",
+      "phone": "010-7755-1182",
+      "email": "jihoon.oh@example.com",
+      "grade": "로켓와우",
+      "vipLevel": "GOLD",
+      "accountStatus": "정상",
+      "joinDate": "2021-07-03",
+      "lastActiveAt": "2026-02-02T20:15:00+09:00",
+      "region": "인천",
+      "address": "인천 연수구 센트럴로 215",
+      "totalOrders": 74,
+      "totalSpend": 1328000,
+      "preferredContact": "전화",
+      "consent": {
+        "marketing": true,
+        "sms": true,
+        "email": true
+      },
+      "tags": ["배송지변경"],
+      "notes": "배송지 변경 요청 빈번."
+    },
+    {
+      "id": "CUST-240501-007",
+      "name": "한지수",
+      "customerNo": "10080155",
+      "phone": "010-3120-7422",
+      "email": "jisoo.han@example.com",
+      "grade": "프리미엄",
+      "vipLevel": "GOLD",
+      "accountStatus": "정상",
+      "joinDate": "2018-04-21",
+      "lastActiveAt": "2026-01-31T11:05:00+09:00",
+      "region": "광주",
+      "address": "광주 서구 상무중앙로 55",
+      "totalOrders": 154,
+      "totalSpend": 5120000,
+      "preferredContact": "이메일",
+      "consent": {
+        "marketing": true,
+        "sms": false,
+        "email": true
+      },
+      "tags": ["프리미엄", "정책문의"],
+      "notes": "정책 변경 사항 문의 중."
+    },
+    {
+      "id": "CUST-240501-008",
+      "name": "서현우",
+      "customerNo": "10068890",
+      "phone": "010-6123-3349",
+      "email": "hyunwoo.seo@example.com",
+      "grade": "일반",
+      "vipLevel": "NONE",
+      "accountStatus": "정상",
+      "joinDate": "2024-06-01",
+      "lastActiveAt": "2026-02-03T10:47:00+09:00",
+      "region": "대전",
+      "address": "대전 유성구 대학로 99",
+      "totalOrders": 9,
+      "totalSpend": 145000,
+      "preferredContact": "전화",
+      "consent": {
+        "marketing": false,
+        "sms": true,
+        "email": false
+      },
+      "tags": ["신규"],
+      "notes": "최근 상품 문의 증가."
+    }
+  ]
+}

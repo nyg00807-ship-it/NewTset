@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>고객상담기록관리시스템 Lite</title>
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/layout.css" />
+    <link rel="stylesheet" href="./css/components.css" />
+    <link rel="stylesheet" href="./css/themes.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <button class="sidebar__brand" id="home-btn" type="button">
+          <div class="brand__logo">CRM</div>
+          <div class="brand__text">
+            <strong>Customer Care</strong>
+            <span>내부 상담 운영 시스템</span>
+          </div>
+        </button>
+
+        <nav class="sidebar__nav">
+          <button class="nav-item is-active" type="button" data-tab="dashboard">상담 대시보드</button>
+          <button class="nav-item" type="button" data-tab="customer-analytics">고객 이력 분석</button>
+          <button class="nav-item" type="button" data-tab="claim-status">클레임 처리 현황</button>
+          <button class="nav-item" type="button" data-tab="policy-faq">정책/FAQ</button>
+          <button class="nav-item" type="button" data-tab="system-notice">시스템 공지</button>
+        </nav>
+
+        <div class="sidebar__section">
+          <h4>오늘의 처리 지표</h4>
+          <div class="metric-list">
+            <div class="metric-card">
+              <span class="metric-label">접수</span>
+              <strong id="metric-received">-</strong>
+            </div>
+            <div class="metric-card">
+              <span class="metric-label">처리중</span>
+              <strong id="metric-inprogress">-</strong>
+            </div>
+            <div class="metric-card">
+              <span class="metric-label">완료</span>
+              <strong id="metric-complete">-</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar__agent">
+          <div class="agent__avatar">HJ</div>
+          <div class="agent__info">
+            <strong>홍지연 상담원</strong>
+            <span>고객경험팀 / 3센터</span>
+          </div>
+          <button class="ghost-button" id="logout-btn">근무 종료</button>
+        </div>
+      </aside>
+
+      <main class="main">
+        <section class="tab-content is-active" id="dashboard" data-tab="dashboard">
+          <header class="topbar">
+            <div class="topbar__title">
+              <h1>고객 상담 기록 관리</h1>
+              <p>실시간 상담 흐름을 기반으로 고객 이력을 통합 관리합니다.</p>
+            </div>
+            <div class="topbar__actions">
+              <div class="search-box">
+                <input
+                  type="text"
+                  id="customer-search"
+                  placeholder="고객명 또는 고객번호 검색"
+                />
+                <button id="customer-search-clear" class="icon-button" title="검색 초기화">
+                  ✕
+                </button>
+              </div>
+              <button class="primary-button" id="new-consult-btn">상담 기록 등록</button>
+            </div>
+          </header>
+          <div class="global-error" id="global-error">
+            데이터 로드에 실패했습니다. 반드시 로컬 서버로 실행하세요.
+          </div>
+
+          <section class="content-grid">
+          <div class="panel panel--customers">
+            <div class="panel__header">
+              <h2>고객 목록</h2>
+              <span class="panel__meta" id="customer-count">0명</span>
+            </div>
+            <div class="table-wrapper">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>고객명</th>
+                    <th>고객번호</th>
+                    <th>연락처</th>
+                    <th>회원등급</th>
+                  </tr>
+                </thead>
+                <tbody id="customer-table-body">
+                  <!-- 고객 목록 -->
+                </tbody>
+              </table>
+              <div class="table-empty" id="customer-empty">
+                검색 조건에 맞는 고객이 없습니다.
+              </div>
+              <div class="table-error" id="customer-error">
+                고객 데이터를 불러오는 중 오류가 발생했습니다.
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel--detail">
+            <div class="panel__header">
+              <h2>선택 고객 상세</h2>
+              <span class="panel__meta" id="selected-customer-status">미선택</span>
+            </div>
+            <div class="detail-card" id="customer-detail">
+              <div class="detail-empty">
+                고객을 선택하면 상세 정보가 표시됩니다.
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel--consult">
+            <div class="panel__header">
+              <h2>상담 기록</h2>
+              <span class="panel__meta" id="consult-count">0건</span>
+            </div>
+
+            <div class="filters">
+              <div class="filter-group">
+                <label for="filter-type">상담 유형</label>
+                <select id="filter-type">
+                  <option value="ALL">전체</option>
+                  <option value="배송">배송</option>
+                  <option value="환불">환불</option>
+                  <option value="결제">결제</option>
+                  <option value="상품 문의">상품 문의</option>
+                  <option value="기타">기타</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <label for="filter-status">처리 상태</label>
+                <select id="filter-status">
+                  <option value="ALL">전체</option>
+                  <option value="접수">접수</option>
+                  <option value="처리중">처리중</option>
+                  <option value="완료">완료</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <label for="filter-sort">정렬</label>
+                <select id="filter-sort">
+                  <option value="DESC">최신순</option>
+                  <option value="ASC">오래된순</option>
+                </select>
+              </div>
+              <button id="filter-reset" class="ghost-button" type="button">필터 초기화</button>
+            </div>
+
+            <div class="consult-list" id="consult-list">
+              <!-- 상담 기록 -->
+            </div>
+            <div class="table-empty" id="consult-empty">
+              선택한 고객의 상담 기록이 없습니다.
+            </div>
+            <div class="table-error" id="consult-error">
+              상담 데이터를 불러오는 중 오류가 발생했습니다.
+            </div>
+          </div>
+
+          <div class="panel panel--form">
+            <div class="panel__header">
+              <h2 id="form-title">상담 기록 등록</h2>
+              <span class="panel__meta" id="form-subtitle">신규 상담 기록을 입력하세요.</span>
+            </div>
+            <form id="consult-form" class="form-grid">
+              <input type="hidden" id="consult-id" />
+              <div class="form-group">
+                <label>상담 유형</label>
+                <select id="consult-type" required>
+                  <option value="">선택</option>
+                  <option value="배송">배송</option>
+                  <option value="환불">환불</option>
+                  <option value="결제">결제</option>
+                  <option value="상품 문의">상품 문의</option>
+                  <option value="기타">기타</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>처리 상태</label>
+                <select id="consult-status" required>
+                  <option value="">선택</option>
+                  <option value="접수">접수</option>
+                  <option value="처리중">처리중</option>
+                  <option value="완료">완료</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>상담 채널</label>
+                <select id="consult-channel" required>
+                  <option value="">선택</option>
+                  <option value="전화">전화</option>
+                  <option value="채팅">채팅</option>
+                  <option value="이메일">이메일</option>
+                  <option value="앱 문의">앱 문의</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>우선순위</label>
+                <select id="consult-priority" required>
+                  <option value="">선택</option>
+                  <option value="높음">높음</option>
+                  <option value="보통">보통</option>
+                  <option value="낮음">낮음</option>
+                </select>
+              </div>
+              <div class="form-group form-group--full">
+                <label>상담 요약</label>
+                <input type="text" id="consult-summary" placeholder="주요 이슈 요약" required />
+              </div>
+              <div class="form-group form-group--full">
+                <label>상담 메모</label>
+                <textarea
+                  id="consult-memo"
+                  rows="5"
+                  placeholder="처리 내용 및 후속 조치를 기록하세요."
+                  required
+                ></textarea>
+              </div>
+              <div class="form-group form-group--full">
+                <label>후속 일정</label>
+                <input type="date" id="consult-followup" />
+              </div>
+              <div class="form-actions">
+                <button type="reset" class="ghost-button" id="form-reset">
+                  입력 초기화
+                </button>
+                <button type="submit" class="primary-button">저장</button>
+              </div>
+            </form>
+            <div class="form-hint" id="form-hint">
+              선택된 고객이 없으면 상담 기록을 등록할 수 없습니다.
+            </div>
+          </div>
+          </section>
+        </section>
+
+        <section class="tab-content" id="customer-analytics" data-tab="customer-analytics">
+          <header class="topbar">
+            <div class="topbar__title">
+              <h1>고객 이력 분석</h1>
+              <p>고객 등급, 활동 지역, 상담 유형 분포를 종합적으로 확인합니다.</p>
+            </div>
+            <div class="topbar__actions">
+              <button class="ghost-button">분석 리포트 다운로드</button>
+            </div>
+          </header>
+
+          <section class="content-grid">
+            <div class="panel panel--kpi">
+              <div class="panel__header">
+                <h2>핵심 고객 지표</h2>
+                <span class="panel__meta">최근 데이터 기준</span>
+              </div>
+              <div class="kpi-grid">
+                <div class="kpi-card">
+                  <span>전체 고객</span>
+                  <strong id="analytics-total">-</strong>
+                </div>
+                <div class="kpi-card">
+                  <span>로켓와우</span>
+                  <strong id="analytics-wow">-</strong>
+                </div>
+                <div class="kpi-card">
+                  <span>프리미엄</span>
+                  <strong id="analytics-premium">-</strong>
+                </div>
+                <div class="kpi-card">
+                  <span>휴면 고객</span>
+                  <strong id="analytics-dormant">-</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel panel--half">
+              <div class="panel__header">
+                <h2>주요 활동 지역</h2>
+                <span class="panel__meta">TOP 4</span>
+              </div>
+              <div class="list-group" id="region-list"></div>
+            </div>
+
+            <div class="panel panel--half">
+              <div class="panel__header">
+                <h2>상담 유형 분포</h2>
+                <span class="panel__meta">최근 상담 기준</span>
+              </div>
+              <div class="list-group" id="issue-list"></div>
+            </div>
+          </section>
+        </section>
+
+        <section class="tab-content" id="claim-status" data-tab="claim-status">
+          <header class="topbar">
+            <div class="topbar__title">
+              <h1>클레임 처리 현황</h1>
+              <p>유형별 클레임 진행 상태와 미해결 티켓을 관리합니다.</p>
+            </div>
+            <div class="topbar__actions">
+              <button class="ghost-button">팀 공유</button>
+            </div>
+          </header>
+
+          <section class="content-grid">
+            <div class="panel panel--wide">
+              <div class="panel__header">
+                <h2>유형별 처리 상태</h2>
+                <span class="panel__meta">접수/처리중/완료</span>
+              </div>
+              <div class="table-wrapper">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>유형</th>
+                      <th>접수</th>
+                      <th>처리중</th>
+                      <th>완료</th>
+                    </tr>
+                  </thead>
+                  <tbody id="claim-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="panel panel--wide">
+              <div class="panel__header">
+                <h2>진행 중 클레임</h2>
+                <span class="panel__meta">최근 5건</span>
+              </div>
+              <div class="list-group" id="claim-open-list"></div>
+            </div>
+          </section>
+        </section>
+
+        <section class="tab-content" id="policy-faq" data-tab="policy-faq">
+          <header class="topbar">
+            <div class="topbar__title">
+              <h1>정책/FAQ</h1>
+              <p>상담원이 자주 참고하는 정책 문서와 FAQ를 제공합니다.</p>
+            </div>
+            <div class="topbar__actions">
+              <button class="ghost-button">정책 변경 요청</button>
+            </div>
+          </header>
+
+          <section class="content-grid">
+            <div class="panel panel--half">
+              <div class="panel__header">
+                <h2>최근 정책 업데이트</h2>
+                <span class="panel__meta">이번 주</span>
+              </div>
+              <div class="list-group">
+                <div class="list-item">
+                  <div>
+                    <strong>반품/환불 처리 기준 개정</strong>
+                    <div class="muted">2026-02-03 · 운영정책팀</div>
+                  </div>
+                  <span class="status-badge status--처리중">확인 필요</span>
+                </div>
+                <div class="list-item">
+                  <div>
+                    <strong>프리미엄 배송 SLA 변경</strong>
+                    <div class="muted">2026-02-01 · 물류정책팀</div>
+                  </div>
+                  <span class="status-badge status--완료">적용 완료</span>
+                </div>
+                <div class="list-item">
+                  <div>
+                    <strong>상담 채널 응대 기준 업데이트</strong>
+                    <div class="muted">2026-01-30 · CX 운영팀</div>
+                  </div>
+                  <span class="status-badge status--완료">적용 완료</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel panel--half">
+              <div class="panel__header">
+                <h2>상담 FAQ</h2>
+                <span class="panel__meta">TOP 5</span>
+              </div>
+              <div class="list-group">
+                <div class="list-item">
+                  <div>
+                    <strong>배송 지연 발생 시 보상 기준은?</strong>
+                    <div class="muted">보상 쿠폰/현금 환불 기준 안내</div>
+                  </div>
+                </div>
+                <div class="list-item">
+                  <div>
+                    <strong>결제 승인 실패 재시도 방법</strong>
+                    <div class="muted">카드사 승인 오류 처리 절차</div>
+                  </div>
+                </div>
+                <div class="list-item">
+                  <div>
+                    <strong>정기배송 주기 변경 요청 처리</strong>
+                    <div class="muted">구독 설정 변경 가이드</div>
+                  </div>
+                </div>
+                <div class="list-item">
+                  <div>
+                    <strong>환불 지연 고객 대응 스크립트</strong>
+                    <div class="muted">고객 불만 완화 스크립트</div>
+                  </div>
+                </div>
+                <div class="list-item">
+                  <div>
+                    <strong>프리미엄 고객 우선 대응 기준</strong>
+                    <div class="muted">VIP/프리미엄 우선 처리 정책</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section class="tab-content" id="system-notice" data-tab="system-notice">
+          <header class="topbar">
+            <div class="topbar__title">
+              <h1>시스템 공지</h1>
+              <p>상담 시스템 운영 공지 및 장애 현황을 확인합니다.</p>
+            </div>
+            <div class="topbar__actions">
+              <button class="ghost-button">공지 등록 요청</button>
+            </div>
+          </header>
+
+          <section class="content-grid">
+            <div class="panel panel--wide">
+              <div class="panel__header">
+                <h2>공지 목록</h2>
+                <span class="panel__meta">최근 30일</span>
+              </div>
+              <div class="list-group">
+                <div class="list-item">
+                  <div>
+                    <strong>[점검] 상담 시스템 정기 점검 예정</strong>
+                    <div class="muted">2026-02-05 02:00 ~ 04:00</div>
+                  </div>
+                  <span class="status-badge status--처리중">예정</span>
+                </div>
+                <div class="list-item">
+                  <div>
+                    <strong>[배포] 상담 이력 상세 화면 개선</strong>
+                    <div class="muted">2026-02-02 · 배포 완료</div>
+                  </div>
+                  <span class="status-badge status--완료">완료</span>
+                </div>
+                <div class="list-item">
+                  <div>
+                    <strong>[장애] 결제 상담 통계 지연 이슈</strong>
+                    <div class="muted">2026-01-29 · 모니터링</div>
+                  </div>
+                  <span class="status-badge status--접수">모니터링</span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
+        <div class="modal" id="consult-modal" aria-hidden="true">
+          <div class="modal__backdrop" data-action="close-modal"></div>
+          <div class="modal__content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <header class="modal__header">
+              <h3 id="modal-title">상담 등록 확인</h3>
+              <p class="muted">고객 성향/환불 사유를 기록한 후 등록을 확정합니다.</p>
+            </header>
+            <div class="modal__body">
+              <div class="form-group">
+                <label>고객 성향</label>
+                <select id="modal-behavior" required>
+                  <option value="">선택</option>
+                  <option value="일반">일반</option>
+                  <option value="주의">주의</option>
+                  <option value="진상">진상</option>
+                  <option value="반복 클레임">반복 클레임</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>환불 사유</label>
+                <select id="modal-refund-reason">
+                  <option value="해당없음">해당없음</option>
+                  <option value="오배송">오배송</option>
+                  <option value="상품불량">상품불량</option>
+                  <option value="단순변심">단순변심</option>
+                  <option value="배송지연">배송지연</option>
+                  <option value="가격/프로모션">가격/프로모션</option>
+                  <option value="정책문의">정책문의</option>
+                  <option value="기타">기타</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>특이사항</label>
+                <textarea
+                  id="modal-note"
+                  rows="4"
+                  placeholder="고객 진상 여부, 환불 사유 상세 등을 기록하세요."
+                ></textarea>
+              </div>
+            </div>
+            <div class="modal__actions">
+              <button class="ghost-button" type="button" data-action="close-modal">취소</button>
+              <button class="primary-button" type="button" id="modal-confirm">등록 확정</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="./js/boot.js" defer></script>
+    <script src="./js/utils/dom.js" defer></script>
+    <script src="./js/utils/date.js" defer></script>
+    <script src="./js/utils/format.js" defer></script>
+    <script src="./js/state/store.js" defer></script>
+    <script src="./js/data/fallbackData.js" defer></script>
+    <script src="./js/data/dataLoader.js" defer></script>
+    <script src="./js/customer/customerService.js" defer></script>
+    <script src="./js/customer/customerUI.js" defer></script>
+    <script src="./js/consult/consultService.js" defer></script>
+    <script src="./js/consult/consultUI.js" defer></script>
+    <script src="./js/consult/consultForm.js" defer></script>
+    <script src="./js/ui/filters.js" defer></script>
+    <script src="./js/ui/metrics.js" defer></script>
+    <script src="./js/ui/analytics.js" defer></script>
+    <script src="./js/ui/claims.js" defer></script>
+    <script src="./js/app.js" defer></script>
+  </body>
+</html>
