@@ -7,7 +7,7 @@
 | 비포이미지 | 애프터이미지 |
 ## Link
 -바로가기(web-site) : 링크
--기획서(fidma-slide) : 링크
+-기획서(figma-slide) : 링크
 -디자인시안(figma) : 링크 
 
 ## 제품 개요
