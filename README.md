@@ -1,5 +1,5 @@
 # 쿠팡 스타일 고객상담기록관리시스템 (CRM Lite)
-!(<img width="1920" height="1261" alt="Image" src="https://github.com/user-attachments/assets/278c0078-61b1-43a5-a1e3-941d7fe615e3" />)
+![<img width="1920" height="1261" alt="Image" src="https://github.com/user-attachments/assets/278c0078-61b1-43a5-a1e3-941d7fe615e3" />]
 ## Link
 -바로가기(web-site) : 링크
 -기획서(fidma-slide) : 링크
